@@ -121,7 +121,7 @@ function actualizarPersona(pid, sNombre, sNumCed, sEmail, sTelefono, nEdad, sCon
 function borrarPersonaPorId(pid) {
   let respuesta = '';
   let peticion = $.ajax({
-    url: 'http://localhost:4000/api/borrar_usuario',
+    url: 'http://localhost:4000/api/borrarCliente',
     type: 'post',
     contentType: 'application/x-www-form-urlencoded; charset=utf-8',
     dataType: 'json',

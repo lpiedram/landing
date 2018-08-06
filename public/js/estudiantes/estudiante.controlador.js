@@ -5,6 +5,8 @@ const Salir = document.querySelector('#salir');
 
 //imprimir_lista_datos();
 let botonGuardar = document.querySelector('#btnGuardar');
+let botonActualizar = document.querySelector('#input-actualizar');
+botonActualizar.hidden = true;
 
 let inputNombre = document.querySelector('#txtNombre');
 let inputCedula = document.querySelector('#txtCed');
@@ -14,10 +16,12 @@ let inputFechaN = document.querySelector('#txtFecha');
 // let inputEstadoCivil = document.querySelector('#sltEstado');
 // let inputNacionalidad = document.querySelector('#slctPais');
 let inputLugarResidencia = document.querySelector('#txtDir');
-let inputcontactoEmer = document.querySelector('#txtCont');
+let inputContactoEmer = document.querySelector('#txtCont');
 let inputTelEmer = document.querySelector('#txtTel2');
 
-Salir.addEventListener('click',cerrarSesion);
+Salir.addEventListener('click', cerrarSesion);
+botonGuardar.addEventListener('click', obtenerDatos);
+botonActualizar.addEventListener('click', obtenerDatosActualizar);
 
 Comprobar();
 
@@ -34,8 +38,6 @@ function cerrarSesion(){
     window.location.assign(baseUrl+'/public/logIn.html');
 }
 
-//botonGuardar.addEventListener('click', obtenerDatos);
-
 /*function obtenerDatos(){
     let infoEstudiante = [];
     let bError = false;
@@ -49,7 +51,7 @@ function cerrarSesion(){
         inputEstadoCivil.value, 
         inputNacionalidad.value, 
         inputLugarResidencia.value,
-        inputcontactoEmer.value,
+        inputContactoEmer.value,
         inputTelEmer.value);
 
         bError = validar();
@@ -73,6 +75,45 @@ function cerrarSesion(){
         }
 };
 
+function obtenerDatosActualizar() {
+
+    let bError = false;
+
+    let sNombre = inputNombre.value;
+    let sNumCed = inputNumCedula.value;
+    let sEmail = inputEmail.value;
+    let sTelefono = inputTelefono.value;
+    let nFechaN = Number(inputFechaN.value);
+    let sLugarResi = inputLugarResidencia.value;
+    let sContacto = inputContactoEmer.value;
+    let sTelEmer = inputTelEmer.value;
+
+    //bError = validar();
+    if (bError == true) {
+        swal({
+            type: 'warning',
+            title: 'No se pudo actualizar el usuario',
+            text: 'Por favor revise los campos en rojo',
+            confirmButtonText: 'Entendido'
+        });
+        console.log('No se pudo registrar el usuario');
+    } else {
+        console.log(imagenUrl);
+        actualizarPersona(idPersonaSeleccionada, sNombre, sNumCed, sEmail, sTelefono, nFechaN, sLugarResi, sContacto, sTelEmer, imagen.src);
+        swal({
+            type: 'success',
+            title: 'Usuario actualizado',
+            text: 'El usuario se actualizó adecuadamente',
+            confirmButtonText: 'Entendido'
+        });
+        listaPersonas = obtenerListaPersonas();
+        imprimirListaPersonas();
+        limpiarFormulario();
+        botonActualizar.hidden = true;
+        botonRegistrar.hidden = false;
+    }
+};
+
 function validar(){
     return false;
 }
@@ -86,7 +127,28 @@ function limpiarFormulario(){
     inputEstadoCivil.value=null; 
     inputNacionalidad.value=null; 
     inputLugarResidencia.value=null;
-    inputcontactoEmer.value=null;
+    inputContactoEmer.value=null;
     inputTelEmer.value=null;
 }
+
+function llenarDatosFormulario() {
+    botonRegistrar.hidden = true;
+    botonActualizar.hidden = false;
+
+    idPersonaSeleccionada = this.dataset._id;// se obtiene el id del usuario seleccionado
+
+    let estudiante = obtenerPersonaPorId(idPersonaSeleccionada);
+
+    inputNombre.value = estudiante['nombre_completo'];
+    inputNumCedulaCliente.value = estudiante['cedula'];
+    inputTelefonoCliente.value = estudiante['telefono'];
+    inputEmailCliente.value = estudiante['correo'];
+    inputFechaN.value= estudiante['fechaNc'];
+    inputLugarResidencia.value= estudiante['direccion'];
+    inputContactoEmer.value= estudiante['contactoEmer'];
+    inputTelEmer.value= estudiante['telEmer'];
+
+    imagen.src = estudiante['foto'];
+
+};
 */

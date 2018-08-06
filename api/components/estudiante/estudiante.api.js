@@ -90,3 +90,37 @@ module.exports.filtrar = function(req, res){
         break;
     }
 };
+module.exports.actualizar = function (req, res) {
+    let actualizarEstudiante = new infoModel({
+        nombre: req.body.nombre,
+        cedula: req.body.cedula,
+        telefono: req.body.telefono,
+        correo: req.body.correo,
+        fechaNc: req.body.fechaNc,
+        direccion: req.body.direccion,
+        contactoEmer: req.body.contactoEmer,
+        telEmer: req.body.telEmer,
+        foto: req.body.foto,
+        contrasena: req.body.contrasena,
+        activado: "0"
+    });
+    actualizarEstudiante.save(function (error) {
+        if (error) {
+            res.json({ success: false, msg: 'No se pudo actualizar el estudiante, ocurrió el siguiente error' + error });
+        } else {
+            res.json({ success: true, msg: 'El estudiante se actualizó con éxito' });
+        }
+    });
+};
+
+module.exports.borrar = function (req, res) {
+    estudianteModel.find().then(
+        function (error) {
+            if (error) {
+                res.json({ success: false, msg: 'No se pudo modificar el estudiante, ocurrió el siguiente error' + error });
+            } else {
+                res.json({ success: true, msg: 'El estudiante se modificó con éxito' });
+            }
+        }
+    );
+};
