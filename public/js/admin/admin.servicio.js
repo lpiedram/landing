@@ -159,6 +159,29 @@ function obtenerListaClientes(){
     return listaClientes;
 }
 
+function obtenerPersonaPorId(pid) {
+    let persona = '';
+
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/buscarClientes_id',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+            id: pid
+        }
+    });
+
+    peticion.done(function (response) {
+        persona = response;
+    });
+
+    peticion.fail(function (response) {
+
+    });
+    return persona;
+};
 
 function filtrarClientes(cTipo,cValor){
     let listaClientes = [];
@@ -188,6 +211,41 @@ function filtrarClientes(cTipo,cValor){
     
     return listaClientes;
 }
+
+function actualizarCliente(id, sNombre, sCed, nTel, sCorreo, sContNom, sContEmail, nContTel, sContrasenna, foto) {
+    let respuesta = '';
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/actualizarClientes',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+            _id: id,
+            nombre: sNombre,
+            cedula: sCed,
+            telefono: nTel,
+            correo: sCorreo,
+            contacto: {
+                nombre: sContNom,
+                correo: sContEmail,
+                telefono: nContTel
+            },
+            foto: foto
+            // contrasena: sContrasenna
+        }
+    });
+
+    peticion.done(function (response) {
+        respuesta = response;
+    });
+
+    peticion.fail(function (response) {
+
+    });
+
+    return respuesta;
+};
 
 function registrarProfesor(profesor){
     let respuesta = '';

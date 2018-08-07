@@ -17,4 +17,15 @@ router.route('/filtrarClientes')
     clientes.filtrar(req, res);
 });
 
+router.route('/actualizarClientes')
+    .post(function (req, res) {
+    clientes.actualizar(req, res);
+});
+
+router.route('/buscarClientes_id')
+    .post(function (req, res) {
+    clientes.buscarClientes_id(req, res);
+});
+
+
 module.exports = router;

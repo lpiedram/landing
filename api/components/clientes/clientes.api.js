@@ -2,8 +2,6 @@
 
 const clienteModel = require('./clientes.model');
 
-
-
 module.exports.registrar = function(req,res){
     let nuevoCliente = new clienteModel({
         nombre:req.body.nombre,
@@ -83,4 +81,23 @@ module.exports.filtrar = function(req, res){
                 });
         break;
     }
+};
+
+module.exports.actualizar = function (req, res) {
+    clienteModel.find(
+        function (error, user) {
+            if (error) {
+                res.json({ success: false, msg: 'No se ha actualizado.' + error });
+
+            } else {
+                res.json({ success: true, msg: 'Se ha actualizado correctamente.' + res });
+            }
+        });
+};
+
+module.exports.buscarClientes_id = function (req, res) {
+    clienteModel.find().then(
+        function (usuario) {
+            res.send(usuario);
+        });
 };
