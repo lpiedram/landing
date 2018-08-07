@@ -20,14 +20,4 @@ router.route('/filtrarEstudiantes')
     datosApi.filtrar(req, res);
 });
 
-router.route('/actualizarEstudiante')
-    .post(function (req, res) {
-        datosApi.actualizar(req, res);
-    });
-
-router.route('/borrarEstudiante')
-    .post(function (req, res) {
-        datosApi.borrar(req, res);
-    });
-
 module.exports = router;

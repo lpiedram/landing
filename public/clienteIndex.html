@@ -33,25 +33,36 @@
       </div>
     </header>
 
+
       <!-- Content -->
     <main>
       <div class="main">
         <form class="cf">
           <h1>Form</h1>
           <div class="half left cf">
-            <input type="text" id="input-name" placeholder="Nombre">
-            <input type="number" id="input-cedula" placeholder="Cédula">
-            <input type="number" id="input-telefono" placeholder="Teléfono">
-            <input type="email" id="input-email" placeholder="Correo electrónico">
-            <input type="password" id="input-contrasenna" placeholder="Contraseña">
-            <input type="text" id="input-contacto" placeholder="Contacto">
+            <input type="text" id="input-name" placeholder="Name">
+            <input type="email" id="input-email" placeholder="Email address">
+            <input type="text" id="input-subject" placeholder="Subject">
+            <input type="text" id="input-test" placeholder="test">
           </div>
           <div class="half right cf">
-            <input type="button" value="Agregar Logo" id="input-foto">
-            <img src="" alt="Foto" id="input-imagen" width="130px" height="130px">
+            <select id="input-valor">
+              <option value="" disabled selected>Select your option</option>
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+            <textarea name="message" type="text" id="input-message" placeholder="Message"></textarea>
+
+            <input id='one' type='checkbox' />
+            <label for='one'>
+              <span></span>
+              Activado
+            </label>
+
           </div>
           <input type="submit" value="Submit" id="input-submit">
-          <input type="submit" value="Actualizar" id="input-actualizar">
         </form>
       </div>
     </main>

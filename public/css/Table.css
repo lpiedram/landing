@@ -11,10 +11,10 @@
 .table-users {
   border: 6px solid #666666;
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-  max-width: calc(100% - 2em);
+  max-width: 100%;
   margin: 1em auto;
   overflow: hidden;
-  width: 900px;
+  width: 90%;
 
 }
 
@@ -34,7 +34,7 @@ table td {
   vertical-align: middle;
 }
 table td:last-child {
-  font-size: 0.95em;
+  font-size: 0.5em;
   line-height: 1.4;
   text-align: center;
 }
@@ -52,56 +52,6 @@ table tr:nth-child(2n+1) {
   color: #ffffff;
 }
 
-@media screen and (max-width: 700px) {
-  table, tr, td {
-    display: block;
-  }
-
-  td:first-child {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-    width: 100px;
-  }
-  td:not(:first-child) {
-    clear: both;
-    margin-left: 100px;
-    padding: 4px 20px 4px 90px;
-    position: relative;
-    text-align: left;
-  }
-  td:not(:first-child):before {
-    color: #f7b600;
-    content: '';
-    display: block;
-    left: 0;
-    position: absolute;
-  }
-  td:nth-child(2):before {
-    content: 'Nombre:';
-  }
-  td:nth-child(3):before {
-    content: 'Apellido:';
-  }
-  td:nth-child(4):before {
-    content: 'Cedula:';
-  }
-  td:nth-child(5):before {
-    content: 'Telefono:';
-  }
-  td:nth-child(6):before {
-    content: 'Correo:';
-  }
-
-  tr {
-    padding: 10px 0;
-    position: relative;
-  }
-  tr:first-child {
-    display: none;
-  }
-}
 
 /* input submit*/
 .editButton{
@@ -123,4 +73,97 @@ table tr:nth-child(2n+1) {
   -moz-box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
   -webkit-box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
   box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
+}
+
+
+.flexsearch--wrapper {
+  height: auto;
+  width: auto;
+  max-width: 25%;
+  min-width: 15%;
+  overflow: hidden;
+  background: transparent;
+  margin: 0;
+  position: static;
+}
+
+.flexsearch--form {
+  overflow: hidden;
+  position: relative;
+}
+
+.flexsearch--input-wrapper {
+  padding: 0 66px 0 0;
+  /* Right padding for submit button width */
+  overflow: hidden;
+}
+
+.flexsearch--input {
+  width: 100%;
+}
+
+/***********************
+ * Configurable Styles *
+ ***********************/
+.flexsearch {
+  margin-left: 5%;
+}
+
+.flexsearch--input {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 60px;
+  padding: 0 46px 0 10px;
+  border-color: #666666;
+  border-radius: 35px;
+  /* (height/2) + border-width */
+  border-style: solid;
+  border-width: 5px;
+  margin-top: 15px;
+  color: #f7b600;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.flexsearch--submit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: none;
+  margin-top: 20px;
+  /* margin-top + border-width */
+  margin-right: 5px;
+  /* border-width */
+  background: transparent;
+  color: #666666;
+  font-size: 40px;
+  line-height: 60px;
+}
+
+.flexsearch--input:focus {
+  outline: none;
+  border-color: #f7b600;
+}
+
+.flexsearch--input:focus.flexsearch--submit {
+  color: #f7b600;
+}
+
+.flexsearch--submit:hover {
+  color: #f7b600;
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: #666666;
+}
+
+input:-moz-placeholder {
+  color: #666666;
 }

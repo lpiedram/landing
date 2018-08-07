@@ -17,14 +17,4 @@ router.route('/filtrarClientes')
     clientes.filtrar(req, res);
 });
 
-router.route('/actualizarClientes')
-    .post(function (req, res) {
-        clientes.actualizar(req, res);
-});
-
-router.route('/borrarClientes')
-    .post(function (req, res) {
-        clientes.borrar(req, res);
-});
-
 module.exports = router;

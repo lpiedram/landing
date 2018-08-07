@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>Administrar Estudiantes</title>
+    <title>Administrar Clientes</title>
 
     <!-- / CSS -->
       <link rel="stylesheet" href="CSS/Home.css" type="text/css" >
@@ -29,8 +29,8 @@
         <ul>
             <li><a href="adminIndex.html"><i class="fas fa-home"></i><span>Inicio</span></a></li>
             <li><a href="adminProfesores.html"><i class="fas fa-chalkboard-teacher"></i><span>Profesor</span></a></li>
-            <li><a><i class="fas fa-user-graduate"></i><span>Estudiantes</span></a></li>
-            <li><a href="adminClientes.html"><i class="fas fa-user-tie"></i><span>Clientes</span></a></li>
+            <li><a href="adminEstudiantes.html"><i class="fas fa-user-graduate"></i><span>Estudiantes</span></a></li>
+            <li><a ><i class="fas fa-user-tie"></i><span>Clientes</span></a></li>
             <li><a href="adminProyectos.html"><i class="fas fa-project-diagram"></i><span>Proyectos</span></a></li>
             <li><a id="salir" class="exit"><i class="fas fa-sign-out-alt"></i><span>Log out</span></a></li>
         </ul>
@@ -63,10 +63,10 @@
                         <input type="text" id="cedula" placeholder="Cedula">
                       </div>
                       <div class="half right cf">
-                            <input type="date" id="fechaNc">
-                            <input type="text" id="contactoEmer" placeholder="Contacto Emergencia">
-                            <input type="text" id="telEmer" placeholder="Telefono Emergencia">
-                            <input type="hidden" id="foto">
+                        <input type="text" id="contactoNombre" placeholder="Nombre Contacto">
+                        <input type="text" id="contactoTel" placeholder="Telefono Contacto">
+                        <input type="text" id="contactoEmail" placeholder="Email Contacto">
+                        <input type="hidden" id="foto">
                         <textarea name="message" type="text" id="direccion" placeholder="Dirreccion"></textarea>
                       </div>
                       <button type="button" class="input-submit" id="registrar">Registrar</button>
@@ -90,7 +90,7 @@
                 </div>
 
                     <div class="table-users">
-                      <div class="tittle">Estudiantes</div>
+                      <div class="tittle">Clientes</div>
                     <table class="table" cellspacing="0" width="100%" id="table-users">
                       <thead>
                         <tr>
@@ -98,15 +98,11 @@
                           <th>Cedula</th>
                           <th>Telefono</th>
                           <th>Correo</th>
-                          <th>Nacimiento</th>
-                          <th>Direccion</th>
-                          <th>Contacto</th>
-                          <th>Tel Contacto</th>
                           <th>Editar</th>
                         </tr>
                       </thead>
                     <tbody>
-                   
+                        
                     </tbody>
                     </table>
                   </div>
@@ -135,7 +131,7 @@
 
     <script src="js/imagenes.js"></script>
     <script src="js/admin/admin.servicio.js"></script>
-    <script src="js/admin/adminEstudiante.controlador.js"></script>
+    <script src="js/admin/adminCliente.controlador.js"></script>
 </footer>
 <!-- / JS-scripts -->
 

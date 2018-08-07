@@ -18,14 +18,13 @@ function obtenerCli(){
     let cedula = filaHead.insertCell();
     let telefono = filaHead.insertCell();
     let correo = filaHead.insertCell();
-    let contacto = filaHead.insertCell();
     let pais = filaHead.insertCell();
+    let redes = filaHead.insertCell();
 
     nombre.innerHTML = "nombre"; 
     cedula.innerHTML = "cedula"; 
     telefono.innerHTML = "telefono"; 
     correo.innerHTML = "correo"; 
-    contacto.innerHTML = "contacto";
     pais.innerHTML = "pais"; 
 
 
@@ -36,14 +35,12 @@ function obtenerCli(){
         let ccedula= fila.insertCell();
         let ctelefono= fila.insertCell();
         let ccorreo= fila.insertCell();
-        let ccontacto = fila.insertCell();
         let cpais= fila.insertCell();
 
         cnombre.innerHTML = listaClientes[i]['nombre'];
         ccedula.innerHTML = listaClientes[i]['cedula'];
         ctelefono.innerHTML = listaClientes[i]['telefono'];
         ccorreo.innerHTML = listaClientes[i]['correo'];
-        ccontacto.innerHTML = listaClientes[i]['contacto'];
         cpais.innerHTML = listaClientes[i]['pais']; 
     }
 

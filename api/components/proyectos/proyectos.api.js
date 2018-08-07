@@ -5,16 +5,13 @@ module.exports.registrarProyecto = function (req , resp)
 {
     let nuevoProyecto = new proyectosModel
     ({
-        nombre : req.body.nombre,
-        numeroCedula : req.body.numeroCedula,
-        telefonos : req.body.telefonos,
-        email : req.body.email,
-        empresa : req.body.empresa,
-        fechaCreacion : req.body.fechaCreacion,
-        fechaFin : req.body.fechaFin,
-        ubicacion : req.body.ubicacion,
-        descripcion :  req.body.descripcion,       
-    })
+        nombre:req.body.nombre,
+        empresa:req.body.empresa,
+        fechaCreacion:req.body.fechaCreacion,
+        descripcion:req.body.descripcion,
+        equipo :req.body.equipo,
+        estado: "Activado"
+    });
   
    nuevoProyecto.save(function(error)
    {
@@ -41,7 +38,9 @@ module.exports.filtrar = function(req, res){
         case "1":
         proyectosModel.find(
             {
-                "nombre": req.body.valor
+                "nombre": {  
+                    $regex: new RegExp(req.body.valor, "ig")
+                } 
             }
             ).then(
                 function(proyectos){
@@ -52,7 +51,9 @@ module.exports.filtrar = function(req, res){
         case "2":
         proyectosModel.find(
             {
-                "numeroCedula": req.body.valor
+                "numeroCedula":{  
+                    $regex: new RegExp(req.body.valor, "ig")
+                } 
             }
             ).then(
                 function(proyectos){

@@ -1,14 +1,10 @@
 'use strict'
 const baseUrl = window.location.protocol+'//'+window.location.hostname+':'+window.location.port;
 const Salir = document.querySelector('#salir');
-const botonRegistrar = document.querySelector('#input-submit');
-const botonActualizar = document.querySelector('#input-actualizar');
-
-botonActualizar.hidden = true;
-
+const botonRegistrar = document.querySelector('#btnRegistrar');
 Salir.addEventListener('click',cerrarSesion);
-botonRegistrar.addEventListener ('click' , obtenerDatosCliente);
-botonActualizar.addEventListener('click', obtenerDatosClienteActualizar);
+
+//botonRegistrar.addEventListener ('click' , obtenerDatosCliente);
 
 Comprobar();
 
@@ -26,13 +22,11 @@ function cerrarSesion(){
 }
 
 
-let inputNombreCliente = document.querySelector('#input-name');
-let inputNumCedulaCliente = document.querySelector('#input-cedula');
-let inputTelefonoCliente = document.querySelector('#input-telefono');
-let inputEmailCliente = document.querySelector('#input-email');
-let inputContrasennaCliente = document.querySelector('#input-contrasenna');
-let inputContactoCliente = document.querySelector('#input-contacto');
-// let inputPais = document.querySelector('#slctPais');
+/*let inputNombreCliente = document.querySelector('#txtNom');
+let inputNumCedulaCliente = document.querySelector('#txtCed');
+let inputTelefonoCliente = document.querySelector('#txtTel');
+let inputEmailCliente = document.querySelector('#txtCorreo');
+let inputPais = document.querySelector('#slctPais');
 
 function obtenerDatosCliente(){
     let infoCliente = [];
@@ -42,8 +36,7 @@ function obtenerDatosCliente(){
         inputNumCedulaCliente.value,
         inputTelefonoCliente.value,
         inputEmailCliente.value,
-        inputContrasennaCliente.value,
-        inputContactoCliente.value);
+        inputPais.value);
     
         bError = validar();
         if(bError == true){
@@ -64,43 +57,6 @@ function obtenerDatosCliente(){
         }
 }
 
-function obtenerDatosClienteActualizar() {
-
-    let bError = false;
-
-    let sNombre = inputNombreCliente.value;
-    let sNumCed = inputNumCedulaCliente.value;
-    let sEmail = inputEmailCliente.value;
-    let sTelefono = inputTelefonoCliente.value;
-    let nEdad = Number(inputEdad.value);
-    let sContacto = inputContactoCliente.value;
-    
-    //bError = validar();
-    if (bError == true) {
-        swal({
-            type: 'warning',
-            title: 'No se pudo actualizar el usuario',
-            text: 'Por favor revise los campos en rojo',
-            confirmButtonText: 'Entendido'
-        });
-        console.log('No se pudo registrar el usuario');
-    } else {
-        console.log(imagenUrl);
-        actualizarPersona(idPersonaSeleccionada, sNombre, sNumCed, sEmail, sTelefono, nEdad, sContacto, imagen.src);
-        swal({
-            type: 'success',
-            title: 'Usuario actualizado',
-            text: 'El usuario se actualizó adecuadamente',
-            confirmButtonText: 'Entendido'
-        });
-        listaPersonas = obtenerListaPersonas();
-        imprimirListaPersonas();
-        limpiarFormulario();
-        botonActualizar.hidden = true;
-        botonRegistrar.hidden = false;
-    }
-};
-
 function validar(){
     return false;
 }
@@ -111,25 +67,6 @@ function limpiarFormulario(){
     inputNumCedulaCliente.value = null
     inputTelefonoCliente.value =null
     inputEmailCliente.value = null
-    inputContrasennaCliente.value = null
-    inputContactoCliente.value = null
     inputPais.value = null
-}
+}*/
 
-function llenarDatosFormulario() {
-    botonRegistrar.hidden = true;
-    botonActualizar.hidden = false;
-
-    idPersonaSeleccionada = this.dataset._id;// se obtiene el id del usuario seleccionado
-
-    let usuario = obtenerPersonaPorId(idPersonaSeleccionada);
-
-    inputNombre.value = usuario['nombre_completo'];
-    inputNumCedulaCliente.value = usuario['cedula'];
-    inputTelefonoCliente.value = usuario['telefono'];
-    inputEmailCliente.value = usuario['correo'];
-    inputContactoCliente.value = usuario['contacto'];
-
-    imagen.src = usuario['foto'];
-
-};
