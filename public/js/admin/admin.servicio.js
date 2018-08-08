@@ -159,29 +159,6 @@ function obtenerListaClientes(){
     return listaClientes;
 }
 
-function obtenerPersonaPorId(pid) {
-    let persona = '';
-
-    let peticion = $.ajax({
-        url: 'http://localhost:4000/api/buscarClientes_id',
-        type: 'post',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {
-            id: pid
-        }
-    });
-
-    peticion.done(function (response) {
-        persona = response;
-    });
-
-    peticion.fail(function (response) {
-
-    });
-    return persona;
-};
 
 function filtrarClientes(cTipo,cValor){
     let listaClientes = [];
@@ -211,41 +188,6 @@ function filtrarClientes(cTipo,cValor){
     
     return listaClientes;
 }
-
-function actualizarCliente(id, sNombre, sCed, nTel, sCorreo, sContNom, sContEmail, nContTel, sContrasenna, foto) {
-    let respuesta = '';
-    let peticion = $.ajax({
-        url: 'http://localhost:4000/api/actualizarClientes',
-        type: 'post',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {
-            _id: id,
-            nombre: sNombre,
-            cedula: sCed,
-            telefono: nTel,
-            correo: sCorreo,
-            contacto: {
-                nombre: sContNom,
-                correo: sContEmail,
-                telefono: nContTel
-            },
-            foto: foto
-            // contrasena: sContrasenna
-        }
-    });
-
-    peticion.done(function (response) {
-        respuesta = response;
-    });
-
-    peticion.fail(function (response) {
-
-    });
-
-    return respuesta;
-};
 
 function registrarProfesor(profesor){
     let respuesta = '';
@@ -343,25 +285,32 @@ function filtrarProfesores(cTipo,cValor){
 
 function registrarProyecto(proyecto){
     let respuesta = '';
+    let informacion = {
+        nombre:proyecto[0],
+        empresa:proyecto[1],
+        descripcion:proyecto[2],
+        equipo:[
+            {
+                id_user:proyecto[3],
+                rol :"1",
+                estado :"1"
+            },
+            {
+                id_user:proyecto[4],
+                rol :"1",
+                estado :"1"
+            }
+        ],
+        empresa_nombre:proyecto[5]
+    }
+
     let peticion = $.ajax({
         url : 'http://localhost:4000/api/registrarProyecto',
         type : 'post',
-        contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+        contentType : 'application/json; charset=utf-8',
         dataType : 'json',
         async : false,
-        data:{
-            nombre: proyecto[0],
-            cedula: proyecto[1],
-            telefono: proyecto[2],
-            correo: proyecto[3],
-            contacto:{
-                nombre:proyecto[4],
-                correo:proyecto[5],
-                telefono:proyecto[6]
-            },
-            foto: proyecto[7],
-            contrasena: Math.random().toString(36).substring(7)
-        }
+        data:JSON.stringify(informacion)
       });
     
       peticion.done(function(response){

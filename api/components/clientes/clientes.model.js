@@ -12,10 +12,10 @@ let clienteSchema = mongoose.Schema({
     cedula: { type: Number, required: true },
     telefono: { type: Number, required: true },
     correo: { type: String, required: true },
-    // contrasena: { type: String, required: true },
+    contrasena: { type: String, required: true },
     foto:{ type: String, required: false },
     contacto: contactoCliente,
     activado:{type : String, required : true}
 });
 
-module.exports = mongoose.model('clientes', clienteSchema);
+module.exports = mongoose.model('Cliente', clienteSchema);

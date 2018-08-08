@@ -12,13 +12,13 @@ const contactoTel = document.querySelector('#contactoTel');
 const contactoEmail = document.querySelector('#contactoEmail');
 const foto = document.querySelector('#foto');
 const Registrar = document.querySelector('#registrar');
-const actualizar = document.querySelector('#actualizar');
 
 const Buscar =document.querySelector('#buscar');
 const btnBuscar=document.querySelector('#btnBuscar');
 
+
+
 Registrar.addEventListener('click',registrarFormulario);
-actualizar.addEventListener('click', actualizarCliente);
 btnBuscar.addEventListener('click',buscarCliente);
 Salir.addEventListener('click',cerrarSesion);
 
@@ -110,11 +110,9 @@ function imprimirListaClientes(){
         ccorreo.innerHTML = listaClientes[i]['correo'];
         editar.innerHTML = '<button type="button" class="editButton" id="'+listaClientes[i]['_id']+'"><i class="fas fa-edit"></i></button>';
 
-        editar.addEventListener('click', llenarDatosFormulario(editar.value));
-
         document.getElementById(listaClientes[i]['_id']).onclick= function() {
             toastr.success(this.id);
-            
+            console.log('working');
         }
         
     }
@@ -147,65 +145,5 @@ function buscarCliente(){
         }
         
     }
-
-};
-
-function editarCliente() {
-
-    let bError = false;
-    let id = listaClientes[i]['_id'];
-
-    let sNombre = nombre.value;
-    let sCed = cedula.value;
-    let nTel = telefono.value;
-    let sCorreo = correo.value;
-    let sContNom = contactoNombre.value;
-    let sContEmail = contactoEmail.value;
-    let nContTel = contactoTel.value;
-    let sContrasenna = contrasenna.value;
-    let foto = foto.value;
-
-    //bError = validar();
-    if (bError == true) {
-        swal({
-            type: 'warning',
-            title: 'No se pudo actualizar el usuario',
-            text: 'Por favor revise los campos en rojo',
-            confirmButtonText: 'Entendido'
-        });
-    } else {
-        actualizarPersona(id, sNombre, sCed, nTel, sCorreo, sContNom, sContEmail, nContTel, sContrasenna, foto);
-        swal({
-            type: 'success',
-            title: 'Usuario actualizado',
-            text: 'El usuario se actualizó adecuadamente',
-            confirmButtonText: 'Entendido'
-        });
-        listaPersonas = obtenerListaPersonas();
-        imprimirListaPersonas();
-        limpiarFormulario();
-        actualizar.hidden = true;
-        Registrar.hidden = false;
-    }
-};
-
-function llenarDatosFormulario(id) {
-    Registrar.hidden = true;
-    actualizar.hidden = false;
-
-    //id = listaClientes[i]['_id'];/ se obtiene el id del usuario seleccionado
-
-    let cliente = obtenerPersonaPorId(id);
-
-    nombre.value = cliente['nombre'];
-    cedula.value = cliente ['cedula'];
-    telefono.value = cliente['telefono'];
-    correo.value = cliente['correo'];
-    contactoNombre.value = cliente[''];
-    contactoEmail.value = cliente[''];
-    contactoTel.value = cliente[''];
-    // contrasenna.value = cliente['contrasena'];
-    foto.value = cliente['foto'];
-
 
 };
