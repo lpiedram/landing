@@ -65,23 +65,44 @@ function registrarFormulario() {
 
 }
 
-function validarFormulario(){
-    let respuesta=false;
+function validarFormulario() {
 
-    if(nombre.value== null || nombre.value==""){
-        respuesta=true;
+    let regexSoloLetras = /^[a-z A-ZáéíóúÁÉÍÓÚñÑ]+$/;
+    let respuesta = false;
+
+    if (nombre.value == '' || (regexSoloLetras.test(nombre.value) == false)) {
+        nombre.classList.add('error_input');
+        respuesta = true;
+    } else {
+        nombre.classList.remove('error_input');
     }
 
-    if (lider.value == null || lider.value==""){
-        respuesta=true;
+    if (descripcion.value == '' || (regexSoloLetras.test(descripcion.value) == false)) {
+        descripcion.classList.add('error_input');
+        respuesta = true;
+    } else {
+        descripcion.classList.remove('error_input');
     }
 
-    if (empresa.value == null || empresa.value==""){
-        respuesta=true;
+    if (empresa.val() == 0) {
+        empresa.classList.add('error_input');
+        respuesta = true;
+    } else {
+        empresa.classList.remove('error_input');
     }
 
-    if (tecnico.value == null || tecnico.value ==""){
-        respuesta=true;
+    if (lider.val() == 0) {
+        lider.classList.add('error_input');
+        respuesta = true;
+    } else {
+        lider.classList.remove('error_input');
+    }
+
+    if (tecnico.val() == 0) {
+        tecnico.classList.add('error_input');
+        respuesta = true;
+    } else {
+        tecnico.classList.remove('error_input');
     }
 
     return respuesta;

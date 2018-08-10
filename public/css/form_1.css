@@ -291,3 +291,7 @@ input[type='checkbox']:checked + label > span:before{
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+
+.error_input{
+    border: 2px solid #d63031;
+}

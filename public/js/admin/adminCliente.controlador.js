@@ -68,23 +68,78 @@ function registrarFormulario() {
 
 }
 
-function validarFormulario(){
-    let respuesta=false;
+function validarFormulario() {
 
-    if(nombre.value== null || nombre.value==""){
-        respuesta=true;
+    let regexSoloLetras = /^[a-z A-ZáéíóúÁÉÍÓÚñÑ]+$/;
+    let regexSoloNumeros = /^ ([0 - 9]) * $ /;
+    let regexCedula = /^[1-9]-?\d{4}-?\d{4}$/;
+    let regexTelefono = /^([0-9]+){9}$/;
+    let regexCorreo = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+    let regexFecha = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+    let regexFoto = /.(gif|jpeg|jpg|png)$/;
+    let respuesta = false;
+
+    if (nombre.value == '' || (regexSoloLetras.test(nombre.value) == false)) {
+        nombre.classList.add('error_input');
+        respuesta = true;
+    } else {
+        nombre.classList.remove('error_input');
     }
 
-    if (cedula.value == null || cedula.value==""){
-        respuesta=true;
+    if (cedula.value == null || (regexCedula.test(cedula.value) == false)) {
+        cedula.classList.add('error_input');
+        respuesta = true;
+    } else {
+        cedula.classList.remove('error_input');
     }
 
-    if (telefono.value == null || telefono.value==""){
-        respuesta=true;
+    if (telefono.value == null || (regexTelefono.test(telefono.value) == false)) {
+        telefono.classList.add('error_input');
+        respuesta = true;
+    } else {
+        telefono.classList.remove('error_input');
     }
 
-    if (correo.value == null || correo.value ==""){
-        respuesta=true;
+    if (correo.value == null || (regexCorreo.test(correo.value) == false)) {
+        correo.classList.add('error_input');
+        respuesta = true;
+    } else {
+        correo.classList.remove('error_input');
+    }
+
+    if (contactoNombre.value == '' || (regexSoloLetras.test(contactoNombre.value) == false)) {
+        contactoNombre.classList.add('error_input');
+        respuesta = true;
+    } else {
+        contactoNombre.classList.remove('error_input');
+    }
+
+    if (contactoTel.value == '' || (regexSoloNumeros.test(contactoTel.value) == false)) {
+        contactoTel.classList.add('error_input');
+        respuesta = true;
+    } else {
+        contactoTel.classList.remove('error_input');
+    }
+
+    if (contactoEmail.value == null || (regexCorreo.test(contactoEmail.value) == false)) {
+        contactoEmail.classList.add('error_input');
+        respuesta = true;
+    } else {
+        contactoEmail.classList.remove('error_input');
+    }
+
+    if (direccion.value == '' || (regexSoloLetras.test(direccion.value) == false)) {
+        direccion.classList.add('error_input');
+        respuesta = true;
+    } else {
+        direccion.classList.remove('error_input');
+    }
+
+    if (foto.value == null || (regexFoto.test(foto.value) == false)) {
+        foto.classList.add('error_input');
+        respuesta = true;
+    } else {
+        foto.classList.remove('error_input');
     }
 
     return respuesta;
