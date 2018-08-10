@@ -25,7 +25,7 @@ module.exports.registrar = function(req, res){
             res.json({success : false, msj : 'No se pudo registrar el profesor, ocurrió el siguiente error' + error});
         }else{
             res.json({success : true, msj : 'El profesor se registró con éxito'});
-        }``
+        }
     });
 };
 

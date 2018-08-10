@@ -160,20 +160,20 @@ function imprimirListaProfesores(){
         let ctelefono= fila.insertCell();
         let ccorreo= fila.insertCell();
         let editar = fila.insertCell();
+        let eliminar = fila.insertCell();
         
         cnombre.innerHTML = listaProfesores[i]['nombre'];
         ccedula.innerHTML = listaProfesores[i]['cedula'];
         ctelefono.innerHTML = listaProfesores[i]['telefono'];
         ccorreo.innerHTML = listaProfesores[i]['correo'];
         editar.innerHTML = '<button type="button" class="editButton" id="'+listaProfesores[i]['_id']+'"><i class="fas fa-edit"></i></button>';
+        eliminar.innerHTML = '<button type="button" class="deleteButton" id="' + listaProfesores[i]['_id'] + '"><i class="fas fa-minus-circle"></i></button>';
 
         document.getElementById(listaProfesores[i]['_id']).onclick= function() {
             toastr.success(this.id);
             console.log('working');
         }
-        
     }
-
 };
 
 function buscarProfesor(){
@@ -200,7 +200,13 @@ function buscarProfesor(){
             toastr.success(this.id);
             console.log('working');
         }
-        
     }
-
 };
+
+function borrarProfesorPorId() {
+    let id = this.dataset._id;
+    borrarProfesorPorId(id);
+    listaProfesores = obtenerListaProfesores();
+    imprimirListaProfesores();
+
+}
